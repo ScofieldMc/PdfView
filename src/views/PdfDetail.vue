@@ -88,7 +88,7 @@
                 loadedRatio:0,
                 curPageNum:0,
                 scale: 100,
-                idx: -1
+                idx: -1,
             }
         },
         components: {
