@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>HelloWorld</h3>
+<script>
+    window.onload = function () {
+        let url = location.href;
+        let params = url.split("?")[1];
+        let param = params.split("&")[0];
+        let value = param.split("=")[1];
+        console.log(params);
+        switch (value) {
+            case '1':
+                location.href = "https://www.baidu.com?"+params;
+                break;
+            case '2':
+                location.href = "https://blog.csdn.net?"+params;
+                break;
+        }
+    }
+</script>
+</body>
+</html>

@@ -3,7 +3,9 @@
         <div class="title">
             <span>{{title}}</span>
         </div>
-        <div class="content"></div>
+        <div class="content">
+            <pdf :src="pdfUrl"></pdf>
+        </div>
         <div class="footer">
             <el-button @click="toDetail" size="small">查看文档</el-button>
         </div>
@@ -11,10 +13,12 @@
 </template>
 
 <script>
+    import pdf from 'vue-pdf'
     export default {
         name: "Profile",
         data(){
             return {
+
             }
         },
         props: {
@@ -24,9 +28,16 @@
         methods: {
             toDetail(){
                 this.$router.push({
-                    name: 'PdfDetail'
+                    path: '/detail',
+                    query: {
+                        title: this.title,
+                        pdfUrl: this.pdfUrl
+                    }
                 })
             }
+        },
+        components: {
+            pdf
         }
 
     }
@@ -49,6 +60,7 @@
     }
     .title span{
         padding-left: 15px;
+        overflow: no-display;
     }
     .footer {
         height: 40px;
@@ -57,7 +69,9 @@
     }
     .content{
         height: 140px;
-        width: 170px;
+        width: 169px;
+        overflow: hidden;
+        margin-bottom: 10px;
 
     }
     .ProfileView:hover{

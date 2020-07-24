@@ -11,7 +11,7 @@ Vue.use(VueRouter)
     component: Main
   },{
       path: '/detail',
-          name: 'PdfDetail',
+      name: 'PdfDetail',
       component: PdfDetail
     }
 ]

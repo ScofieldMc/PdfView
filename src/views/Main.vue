@@ -11,19 +11,14 @@
                 </div>
             </el-header>
             <el-main id="el-main">
-                <Profile title="基础数据管理"></Profile>
-                <Profile title="基础数据管理"></Profile>
-                <Profile title="基础数据管理"></Profile>
-                <Profile title="基础数据管理"></Profile>
-                <Profile title="基础数据管理"></Profile>
-                <Profile title="基础数据管理"></Profile>
-                <Profile title="基础数据管理"></Profile>
+                <Profile v-for="item in pdfs" :title="item.title" :pdf-url="item.url"/>
             </el-main>
         </el-container>
     </div>
 </template>
 <script>
     import Profile from "../components/Profile";
+    import axios from 'axios'
     export default {
         name: 'App',
         methods: {
@@ -33,8 +28,15 @@
         },
         data(){
             return {
-                title: '标准化平台操作指南'
+                title: '标准化平台操作指南',
+                pdfs: null
             }
+        },
+        created() {
+            console.log("created");
+            axios.get('data.json').then(response => {
+                this.pdfs = response.data.pdfs;
+            })
         }
     }
 </script>
@@ -51,6 +53,7 @@
     }
     #el-main{
         display: flex;
+        justify-content: center;
     }
     .el-main{
         flex-wrap: wrap;
